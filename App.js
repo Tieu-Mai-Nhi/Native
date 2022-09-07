@@ -1,57 +1,52 @@
-import { StatusBar } from "expo-status-bar";
-import {
-  Alert,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import Task from "./components/Task";
-import styles from "./App.components.style";
-import Form from "./components/Form";
 import { useState } from "react";
+import { FlatList, Image, SafeAreaView, Text, View } from "react-native";
+import styles from "./App.components.style";
 
 export default function App() {
-  const [taskList, setTaskList] = useState([])
-  const handleAddTask = (task) => {
-    // Add task
-    setTaskList([...taskList, task]);
-  }
+  const listData = [
+    {
+      title: "HP gaming",
+      price: 400,
+      img: "https://laptoptcc.com/wp-content/uploads/2021/04/AZZ02208-DELL-PRECISION-5510-LAPTOPTCC-1-1.jpg",
+    },
+    {
+      title: "HP gaming",
+      price: 400,
+      img: "https://laptoptcc.com/wp-content/uploads/2021/04/AZZ02208-DELL-PRECISION-5510-LAPTOPTCC-1-1.jpg",
+    },
+    {
+      title: "HP gaming",
+      price: 400,
+      img: "https://laptoptcc.com/wp-content/uploads/2021/04/AZZ02208-DELL-PRECISION-5510-LAPTOPTCC-1-1.jpg",
+    },
+    {
+      title: "HP gaming",
+      price: 400,
+      img: "https://laptoptcc.com/wp-content/uploads/2021/04/AZZ02208-DELL-PRECISION-5510-LAPTOPTCC-1-1.jpg",
+    },
+  ];
 
-  const handleDeleteTask = (index) => {
-    Alert.alert(
-      "Thông báo",
-      "Bạn có chắc chắn muốn xóa?",
-      [
-        {
-          text: "OK",
-          onPress: () => {
-            let taskListCurrent = [...taskList];
-            taskListCurrent.splice(index, 1);
-            setTaskList(taskListCurrent);
-          },
-          style: "cancel"
-        },
-        { text: "Cancel", onPress: () => { } }
-      ]
-    );
-  }
-  return (
+  const [listItem, setListItem] = useState(listData);
 
-    <View style={styles.container}>
-      <View style={styles.body}>
-        <Text style={styles.header}>Todo List</Text>
-        <ScrollView style={styles.items}>
-          {
-            taskList.map((item, index) => {
-              return <Task key={index} title={item} number={index + 1} onDeleteTask={() => handleDeleteTask(index)} />
-            })
-          }
-        </ScrollView>
+  const ItemView = ({ item }) => {
+    return (
+      <View style={styles.item}>
+        <Text style={styles.text}>{item.title}</Text>
+        <Text style={styles.text}>{item.price}</Text>
+        <Image style={styles.img} source={{
+          uri: `${item.img}`
+        }}></Image>
       </View>
+    )
+  }
 
-      <Form onAddTask={handleAddTask} />
-    </View>
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={listItem}
+        renderItem={ItemView}
+        numColumns={2}
+      />
+    </SafeAreaView>
   );
-}
+};

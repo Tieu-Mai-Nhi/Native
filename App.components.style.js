@@ -5,19 +5,29 @@ const styles = StyleSheet.create({
     flex: 1, //chiem full man hinh
     backgroundColor: "deeppink",
   },
-  body: {
-    flex: 1, //chiem full man hinh
-    paddingTop: 50,
-    paddingHorizontal: 18,
+
+  item: {
+    flex: 1,
+    padding: 20,
+    marginHorizontal: 16,
+    marginVertical: 8,
+    height: 200,
+    borderRadius: 20,
+    borderColor: "#fff",
+    borderWidth: 1,
+    alignItems: "center",
   },
-  header: {
-    fontSize: 24,
-    color: "#21a3d0",
-    fontWeight: "bold",
+
+  text: {
+    color: "#fff",
+    fontSize: 20,
   },
-  items: {
-    marginTop: 20,
-  },
+
+  img: {
+    width: 100,
+    height: 100,
+  }
+
 });
 
 export default styles;
