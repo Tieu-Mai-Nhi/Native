@@ -1,52 +1,51 @@
-import { useState } from "react";
-import { FlatList, Image, SafeAreaView, Text, View } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer, TabActions, TabRouter } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { SafeAreaView } from "react-native";
 import styles from "./App.components.style";
+import Detail from "./screens/Detail";
+import Home from "./screens/Home";
+import Login from "./screens/Login";
+import User from "./screens/User";
+import Welcome from "./screens/Welcome";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+
+
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const listData = [
-    {
-      title: "HP gaming",
-      price: 400,
-      img: "https://laptoptcc.com/wp-content/uploads/2021/04/AZZ02208-DELL-PRECISION-5510-LAPTOPTCC-1-1.jpg",
-    },
-    {
-      title: "HP gaming",
-      price: 400,
-      img: "https://laptoptcc.com/wp-content/uploads/2021/04/AZZ02208-DELL-PRECISION-5510-LAPTOPTCC-1-1.jpg",
-    },
-    {
-      title: "HP gaming",
-      price: 400,
-      img: "https://laptoptcc.com/wp-content/uploads/2021/04/AZZ02208-DELL-PRECISION-5510-LAPTOPTCC-1-1.jpg",
-    },
-    {
-      title: "HP gaming",
-      price: 400,
-      img: "https://laptoptcc.com/wp-content/uploads/2021/04/AZZ02208-DELL-PRECISION-5510-LAPTOPTCC-1-1.jpg",
-    },
-  ];
-
-  const [listItem, setListItem] = useState(listData);
-
-  const ItemView = ({ item }) => {
-    return (
-      <View style={styles.item}>
-        <Text style={styles.text}>{item.title}</Text>
-        <Text style={styles.text}>{item.price}</Text>
-        <Image style={styles.img} source={{
-          uri: `${item.img}`
-        }}></Image>
-      </View>
-    )
-  }
-
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={listItem}
-        renderItem={ItemView}
-        numColumns={2}
-      />
+      <Welcome />
+      <NavigationContainer>
+
+
+        <Tab.Navigator
+          tabBarOptions={{
+            labelStyle: {
+              fontSize: 16,
+            },
+            activeTintColor: 'red',
+            inactiveTintColor: 'black',
+          }}
+
+        >
+          <Tab.Screen name="Login" component={Login}
+            options={
+              { tabBarIcon: ({ color }) => <FontAwesome name="home" size={30} color={color} /> }
+            }
+          />
+          <Tab.Screen name="Home" component={Home}
+            options={
+              { tabBarIcon: ({ color }) => <FontAwesome name="bell" size={30} color={color} /> }
+            }
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
     </SafeAreaView>
   );
+
+
+
 };

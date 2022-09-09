@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1, //chiem full man hinh
-    backgroundColor: "deeppink",
   },
 
   item: {
@@ -17,16 +16,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: "center",
   },
-
-  text: {
-    color: "#fff",
-    fontSize: 20,
-  },
-
-  img: {
-    width: 100,
-    height: 100,
-  }
 
 });
 
