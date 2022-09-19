@@ -13,7 +13,7 @@ const Task = (props) => {
     >
       <View style={styles.item}>
         <View style={[styles.square, itemBg]}>
-          {/* css nhiều cho vào 1 mảng */}
+          {/* css nhiều thì cho vào 1 mảng */}
           <Text style={styles.number}>{numberText}</Text>
         </View>
         <Text style={styles.content}>{props.title}</Text>

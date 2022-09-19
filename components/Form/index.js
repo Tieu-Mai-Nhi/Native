@@ -12,7 +12,7 @@ import styles from "./style";
 const Form = (props) => {
     const [task, setTask] = useState('')
 
-    const handleAddTask = (task) => {
+    const handleAddTask = () => {
         if (task.length === 0) {
             alert("Vui lòng nhập công việc!")
             return false;
@@ -29,9 +29,9 @@ const Form = (props) => {
             keyboardVerticalOffset={10}
         >
             <TextInput
-                value={task}
                 placeholder="Add Task"
                 style={styles.input}
+                value={task}
                 onChangeText={(text) => setTask(text)} />
             <TouchableOpacity>
                 <View style={styles.iconWrapper}>

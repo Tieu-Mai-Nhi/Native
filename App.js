@@ -14,7 +14,7 @@ import { useState } from "react";
 
 export default function App() {
   const [taskList, setTaskList] = useState([])
-  const handleAddTask = (task) => {
+  const handleAddTaskList = (task) => {
     // Add task
     setTaskList([...taskList, task]);
   }
@@ -51,7 +51,7 @@ export default function App() {
         </ScrollView>
       </View>
 
-      <Form onAddTask={handleAddTask} />
+      <Form onAddTask={handleAddTaskList} />
     </View>
   );
 }
